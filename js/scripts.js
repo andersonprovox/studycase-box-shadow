@@ -45,6 +45,28 @@ class BoxShadowGenerator {
         this.webkitRule.innerText = this.currentRule;
         this.mozRule.innerText = this.currentRule;
     }
+
+    updateValue(type, value) {
+        switch (type) {
+            case "horizontal":
+                this.horizontalRef.value = value;
+                break;
+            case "vertical":
+                this.verticalRef.value = value;
+                break;
+            case "sread":
+                this.spreadRef.value = value;
+                break;
+            case "blur":
+                this.blurRef.value = value;
+                break;
+        
+            default:
+                break;
+        }
+        this.applyRule()
+        this.showRule()
+    }
 }
 
 // seleção de elementos
@@ -82,3 +104,26 @@ const boxShadow = new BoxShadowGenerator(
     boxShadow.initialize();
 
 // eventos
+horizontal.addEventListener("input", (e) => {
+    const value = e.target.value
+
+    boxShadow.updateValue("horizontal", value);
+})
+
+vertical.addEventListener("input", (e) => {
+    const value = e.target.value
+
+    boxShadow.updateValue("vertical", value);
+})
+
+spread.addEventListener("input", (e) => {
+    const value = e.target.value
+
+    boxShadow.updateValue("spread", value);
+})
+
+blur.addEventListener("input", (e) => {
+    const value = e.target.value
+
+    boxShadow.updateValue("blur", value);
+})
